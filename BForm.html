@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Business cards ordering form</title>
+
+<link href="CSS/style.css" rel="stylesheet" type="text/css" />
+
+<script src="JS/jquery-1.11.1.js"></script>
+<script src="JS/jquery.validate.js"></script>
+<script src="JS/additional-methods.js"></script>
+<script src="JS/sendScript.js"></script>
+<script type="text/javascript" src="JS/jquery.placeholder.js"></script>
+<script type="text/javascript" src="JS/additionalChecks.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="content">
+   <div id="form">
+    <form action="BusinessCardsForm.asp" method="POST" enctype="multipart/form-data" name="form1" id="form1" onsubmit="formCheck ()">
+<input type="hidden" name="Action" value="SendEmail">
+      <table border="0" width="100%">
+        <tr>
+          <td style="width:190px">Full Name</td>
+          <td>
+            <input type="text" name="fullName" id="fullName" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="jobTitle">Job Title</label></td>
+          <td>
+            <input type="text" name="qualification" id="qualification"/>
+         </td>
+        </tr>
+        <tr>
+          <td><label for="workEmail">Email</label></td>
+          <td>
+            <input name="workEmail" type="text" placeholder="@edwardsvacuum.com" id="workEmail" />
+            <span id="emailFieldIntCheck"><br />Please provide a valid email address.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="address1">Address Line 1</label></td>
+          <td>
+            <input type="text" name="address1" id="address1" />
+         </td>
+        </tr>
+        <tr>
+          <td><label for="address2">Address Line 2</label></td>
+          <td>
+            <input type="text" name="address2" id="address2" />
+         </td>
+        </tr>
+         <tr>
+          <td><label for="address3">Address Line 3</label></td>
+          <td>
+            <input type="text" name="address3" id="address3" />
+         </td>
+        </tr>
+        <tr>
+          <td><label for="address4">Address Line 4 (country)</label></td>
+          <td>
+            <input type="text" name="address4" id="address4" />
+         </td>
+        </tr>
+        <tr>
+          <td><label for="selectEntity">Entity</label></td>
+          <td><select name="selectEntity" id="selectEntity">
+           	  <option value="" selected>----</option>
+           	  <option value="Edwards">Edwards (general)</option>
+              <option value="SA Edwards Vacuum NV">SA Edwards Vacuum NV</option>
+           	  <option value="Edwards Vacuo Ltda">Edwards Vacuo Ltda</option>
+           	  <option value="Edwards Technologies Trading Company Ltd.">Edwards Technologies Trading (Shanghai) Company Ltd.</option>
+           	  <option value="Edwards Technologies Vacuum Engineering Co. Ltd.">Edwards Technologies Vacuum Engineering (Qingdao) Co. Ltd.</option>
+           	  <option value="Edwards Technologies Vacuum Engineering Company Ltd.">Edwards Technologies Vacuum Engineering (Shanghai) Company Ltd.</option>
+           	  <option value="Edwards Technologies Vacuum Engineering Co. Ltd.">Edwards Technologies Vacuum Engineering (Xian) Co. Ltd.</option>
+           	  <option value="Edwards Vacuum Hong Kong Ltd.">Edwards Vacuum Hong Kong Ltd.</option>
+           	  <option value="Edwards Services. s.r.o.">Edwards Services. s.r.o.</option>
+           	  <option value="Edwards, s.r.o.">Edwards, s.r.o.</option>
+           	  <option value="Edwards GmbH">Edwards GmbH</option>
+           	  <option value="Edwards SAS ">Edwards SAS </option>
+           	  <option value="Edwards Vacuum Technology Ireland Ltd.">Edwards Vacuum Technology Ireland Ltd.</option>
+           	  <option value="Edwards Israel Vacuum Ltd.">Edwards Israel Vacuum Ltd.</option>
+           	  <option value="Edwards India Private Ltd.">Edwards India Private Ltd.</option>
+           	  <option value="Edwards SPA">Edwards SPA</option>
+           	  <option value="Edwards Japan Ltd">Edwards Japan Ltd</option>
+           	  <option value="Edwards Korea Ltd.">Edwards Korea Ltd.</option>
+           	  <option value="Edwards Technologies Malaysia Sdn. Bhd.">Edwards Technologies Malaysia Sdn. Bhd.</option>
+           	  <option value="Edwards Technologies Singapore Pte Ltd.">Edwards Technologies Singapore Pte Ltd.</option>
+           	  <option value="Edwards Technologies Ltd.">Edwards Technologies Ltd.</option>
+           	  <option value="Edwards High Vacuum International Ltd.">Edwards High Vacuum International Ltd.</option>
+           	  <option value="Edwards Chemical Management Europe Ltd.">Edwards Chemical Management Europe Ltd.</option>
+           	  <option value="Edwards Ltd.">Edwards Ltd.</option>
+           	  <option value="Edwards Ukco 2 Ltd.">Edwards Ukco 2 Ltd.</option>
+           	  <option value="Edwards Vacuum Ltd.">Edwards Vacuum Ltd.</option>
+           	  <option value="Edwards US Holdco Ltd.">Edwards US Holdco Ltd.</option>
+           	  <option value="Edwards Vacuum LLC">Edwards Vacuum LLC</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td><label for="tel">Telephone</label></td>
+          <td>
+            <input type="text" placeholder="+44 (0) 1293 603 275" name="tel" id="tel" />
+          <span id="telFieldIntCheck"><br />You can only use numbers, + and ().</span></td>
+        </tr>
+        <tr>
+          <td>Mobile</td>
+          <td>
+            <input type="text" placeholder="+44 (0) 1293 603 275"  name="mobile" id="mobile" />
+          <span id="mobileFieldIntCheck"><br />You can only use numbers, + and ().</span></td>
+        </tr>
+        <tr>
+          <td><label for="fax">Fax</label></td>
+          <td>
+            <input type="text" placeholder="+44 (0) 1293 603 275" name="fax" id="fax"/>
+            <span id="faxFieldIntCheck"><br />You can only use numbers, + and ().</span>
+</td>
+        </tr>
+        <tr>
+          <td><label for="po">Purchase Order Number</label></td>
+          <td>
+            <input type="text" name="po" id="po" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="numberRequired">Number of Business Cards Required</label></td>
+          <td valign="top">
+            <input type="text" name="numberRequired" id="numberRequired" />
+            </td>
+        </tr>
+        <tr>
+          <td><label for="deliveryAddress">Delivery Address</label>
+            
+            <br />
+            (If different from above) </td>
+          <td valign="top"><input type="text" name="deliveryAddress" id="deliveryAddress" /></td>
+        </tr>
+        <tr>
+          <td><span class="selectRequiredMsg">Please select the country 
+            where you want the cards to be delivered.</span></td>
+          <td valign="top"><select name="countryDelivery" id="countryDelivery">
+            <option value="" selected>----</option>
+            <option value="brazil">Brazil</option>
+            <option value="china">China</option>
+            <option value="chinaTw">China - Taiwan</option>
+            <option value="czech">Czech Republic</option>
+            <option value="france">France</option>
+            <option value="germany">Germany</option>
+            <option value="india">India</option>
+            <option value="italy">Italy</option>
+            <option value="japan">Japan</option>
+            <option value="malaysia">Malaysia</option>
+            <option value="singapore">Singapore</option>
+            <option value="southKorea">South Korea</option>
+            <option value="uk">UK</option>
+          </select></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><input type="submit" name="button" id="button" value="Submit" /></td>
+        </tr>
+      </table>
+      <p>&nbsp;</p>
+    </form>
+  </div>
+  <div id="cardPrev">
+  <table id="Table_01" width="452" height="259" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="6">
+			<img src="images/business-cards-new_01.png" width="451" height="90" alt=""></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="90" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="12">
+			<img src="images/business-cards-new_02.png" width="35" height="169" alt=""></td>
+		<td colspan="4"><span id="nameField"></span></td>
+		<td rowspan="12">
+			<img src="images/business-cards-new_04.png" width="7" height="169" alt=""></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="37" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="4">
+			<span id="titleField"></span></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="14" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="images/TITLE-07.png" width="252" height="4" alt=""></td>
+		<td rowspan="2">
+			<span style="line-height:12px;" id="address1Field" class="lowerFields"></span></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="4" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img id="telIco" style="visibility:hidden" src="images/PHONE_ICO.png" width="14" height="44" alt=""></td>
+		<td rowspan="2" width="255"><span id="phoneField1" class="lowerFields"></span></td>
+		<td rowspan="9">
+			<img src="images/business-cards-new_10.png" width="13" height="114" alt=""></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="36" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<span id="address2Field" class="lowerFields"></span></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="8" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img id="mobileIco" style="visibility:hidden" src="images/MOBILE_ICO.png" width="14" height="13" alt=""></td>
+		<td rowspan="2">
+			<span id="phoneField2" class="lowerFields"></span></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="6" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<span id="address3Field" class="lowerFields"></span></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="7" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img id="faxIco" style="visibility:hidden" src="images/FAX_ICO.png" width="14" height="12" alt=""></td>
+		<td rowspan="2">
+			<span id="phoneField3" class="lowerFields"></span></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="6" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<span id="address4Field" class="lowerFields"></span></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="6" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img id="mailIco" style="visibility:hidden" src="images/MAIL_ICO.png" width="14" height="20" alt=""></td>
+		<td rowspan="2">
+			<span id="emailField" class="lowerFields"></span></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="6" alt=""></td>
+	</tr>
+	<tr>
+		<td><span id="address5Field" class="lowerFields"></span></td>	<td>
+			<img src="images/spacer.gif" width="1" height="14" alt=""></td>
+	</tr>
+	<tr>
+		<td colspan="2"><img src="images/business-cards-new_21.png" width="239" height="25" alt="" /></td>
+		<td>
+			<img src="images/business-cards-new_22.png" width="157" height="25" alt=""></td>
+		<td>
+			<img src="images/spacer.gif" width="1" height="25" alt=""></td>
+	</tr>
+    <tr><td height="10" colspan="12">&nbsp;</td></tr>
+    <tr><td colspan="4"><input type="button" name="button2" id="showPrev" value="Show Card Preview" onClick="showCardPrev()"/></td><td align="right">&nbsp;</td></tr>
+	<tr><td colspan="12"></td></tr>
+</table>
+
+<table >
+
+
+</table>
+
+  
+  </div>
+
+
+<script>
+// jquery validation form
+jQuery.validator.setDefaults({
+  debug: true,
+  success: "valid"
+});
+$( "#form1" ).validate({
+  rules: {
+    fullName: {
+      required: true
+    },
+	 qualification: {
+      required: true
+    },
+	workEmail: {
+      required: true
+    },
+	address: {
+      required: true
+    },
+	selectEntity: {
+      required: true
+    },
+	mobile: {
+      required: true
+    },
+	numberRequired: {
+      required: true
+    },
+	countryDelivery: {
+      required: true
+    },
+	messages:{
+		required: "Please select an option from the list."
+	}
+  }
+});
+// jquery placeholder
+jQuery(document).ready(function($) {
+  $(":input[placeholder]").placeholder();
+});    
+</script>
+  
+  <!-- end .content --></div>
+  <!-- end .container --></div>
+
+</body>
+</html>
